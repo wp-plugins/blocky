@@ -45,8 +45,8 @@ Blocky! content sections are saved as post meta, which is different to post cont
 
 == Screenshots ==
 1. The admin interface
-2. Blocky! in action
-3. Blocky! settings page
+2. Blocky! settings page
+3. Blocky! in action
 
 == Changelog ==
 = 1.0 =
