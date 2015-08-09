@@ -4,7 +4,7 @@ Tags: admin
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=WLV5HPHSPM2BG&lc=AU&item_name=Cameron%20Jones%20Web%20Development¤cy_code=AUD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 4.2
 Tested up to: 4.3
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -49,6 +49,8 @@ Blocky! content sections are saved as post meta, which is different to post cont
 3. Blocky! in action
 
 == Changelog ==
+= 1.0.2 =
+* Fixing bug that would return errors if there were no content sections and `WP_DEBUG` is turned on.
 = 1.0.1 =
 * Fixing bug where meta box wouldn't close in certain situations
 = 1.0 =
