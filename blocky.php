@@ -75,7 +75,7 @@ function blocky_content_filter( $content ) {
 		$blocky_new_content .= $blocky_closetag;
 		if( isset( $blocky_additional_content ) && !empty( $blocky_additional_content ) ) {
 		foreach( $blocky_additional_content[0] as $blocky_section ){
-			$blocky_new_content .= str_replace( '>', ' class="' . $blocky_section['class'] . '" data-blocky-version="1.0.2">', $blocky_opentag );
+			$blocky_new_content .= str_replace( '>', ' class="' . $blocky_section['class'] . '" data-blocky-version="1.1.0">', $blocky_opentag );
 			$blocky_new_content .= $blocky_section['content'];
 			$blocky_new_content .= $blocky_closetag;
 		}
