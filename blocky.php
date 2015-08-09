@@ -1,9 +1,9 @@
 <?php
 /*
- * Plugin Name: Blocky! - Additional Content Sections
+ * Plugin Name: Blocky! - Additional Content Blocks
  * Plugin URI: http://cameronjones.x10.mx/projects/blocky
  * Description: Add additional sections to your page content - no theme editing required!
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: Cameron Jones
  * Author URI: http://cameronjones.x10.mx
  * Text Domain: blocky
@@ -21,7 +21,7 @@
     GNU General Public License for more details.
  */
 
-defined( 'ABSPATH' ) or die( /*'No script kiddies please!'*/ );
+defined( 'ABSPATH' ) or die();
 
 add_action( 'add_meta_boxes', 'blocky_dynamic_add_custom_box' );
 add_action( 'save_post', 'blocky_dynamic_save_postdata' );
@@ -44,7 +44,7 @@ function get_additional_content( $postID = NULL ) {
 	}
 	
 	$blocky_additional_content = get_post_meta( $blocky_post_id, 'blocky_extra_content' );
-	if( isset( $blocky_additional_content ) && !empty( $blocky_additional_content ) ) {
+	if( isset( $blocky_additional_content[0] ) && !empty( $blocky_additional_content[0] ) ) {
 		foreach( $blocky_additional_content[0] as $blocky_section ){
 			$return[] = array( 'class' => $blocky_section['class'], 'content' => $blocky_section['content'] );
 		}
@@ -70,12 +70,12 @@ function blocky_content_filter( $content ) {
 	}
 	
 	$blocky_new_content = NULL;
-		$blocky_new_content .= $blocky_opentag;
-		$blocky_new_content .= $content;
-		$blocky_new_content .= $blocky_closetag;
-		if( isset( $blocky_additional_content ) && !empty( $blocky_additional_content ) ) {
+	$blocky_new_content .= $blocky_opentag;
+	$blocky_new_content .= $content;
+	$blocky_new_content .= $blocky_closetag;
+	if( isset( $blocky_additional_content[0] ) && !empty( $blocky_additional_content[0] ) ) {
 		foreach( $blocky_additional_content[0] as $blocky_section ){
-			$blocky_new_content .= str_replace( '>', ' class="' . $blocky_section['class'] . '" data-blocky-version="1.1.0">', $blocky_opentag );
+			$blocky_new_content .= str_replace( '>', ' class="' . $blocky_section['class'] . '" data-blocky-version="1.1.2">', $blocky_opentag );
 			$blocky_new_content .= do_shortcode( $blocky_section['content'] );
 			$blocky_new_content .= $blocky_closetag;
 		}
