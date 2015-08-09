@@ -4,7 +4,7 @@ Tags: admin, builder, cms, css, class, page, post, page builder, content, post m
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=WLV5HPHSPM2BG&lc=AU&item_name=Cameron%20Jones%20Web%20Development¤cy_code=AUD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 4.2
 Tested up to: 4.3
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -52,6 +52,8 @@ Yes. Blocky! adds a filter to the `the_content()` function, but you can use `ech
 3. Blocky! in action
 
 == Changelog ==
+= 1.1.1 =
+* Applied `do_shortcode` filter to Blocky!'s content filter.
 = 1.1.0 =
 * Added `get_additional_content()` function to allow for more advanced uses of Blocky!
 * Small readme fixes
@@ -63,6 +65,8 @@ Yes. Blocky! adds a filter to the `the_content()` function, but you can use `ech
 * Initial release
 
 == Upgrade Notice ==
+= 1.1.1 =
+This version includes an addition that allows shortcodes to be called in additional content sections. Please upgrade immediately.
 = 1.1.0 =
 Version 1.1.0 introduces the `get_additional_content()` function, allowing you to use Blocky! for more advanced uses.
 = 1.0.0 =

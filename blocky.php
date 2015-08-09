@@ -3,7 +3,7 @@
  * Plugin Name: Blocky! - Additional Content Sections
  * Plugin URI: http://cameronjones.x10.mx/projects/blocky
  * Description: Add additional sections to your page content - no theme editing required!
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: Cameron Jones
  * Author URI: http://cameronjones.x10.mx
  * Text Domain: blocky
@@ -76,7 +76,7 @@ function blocky_content_filter( $content ) {
 		if( isset( $blocky_additional_content ) && !empty( $blocky_additional_content ) ) {
 		foreach( $blocky_additional_content[0] as $blocky_section ){
 			$blocky_new_content .= str_replace( '>', ' class="' . $blocky_section['class'] . '" data-blocky-version="1.1.0">', $blocky_opentag );
-			$blocky_new_content .= $blocky_section['content'];
+			$blocky_new_content .= do_shortcode( $blocky_section['content'] );
 			$blocky_new_content .= $blocky_closetag;
 		}
 	}
