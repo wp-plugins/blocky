@@ -1,9 +1,9 @@
 <?php
 /*
  * Plugin Name: Blocky! - Additional Content Sections
- * Plugin URI: http://cameronjones.x10.mx/projects/additional-content-sections
+ * Plugin URI: http://cameronjones.x10.mx/projects/blocky
  * Description: Add additional sections to your page content - no theme editing required!
- * Version: 1.0.2
+ * Version: 1.1.0
  * Author: Cameron Jones
  * Author URI: http://cameronjones.x10.mx
  * Text Domain: blocky
@@ -33,6 +33,24 @@ add_filter( 'the_content', 'blocky_content_filter' );
 add_filter( 'tiny_mce_before_init', 'blocky_get_TinyMCE_Settings' );
 
 global $TinyMCE_settings;
+
+function get_additional_content( $postID = NULL ) {
+	$return = array();
+	if( isset( $postID ) && !empty( $postID ) ) {
+		$blocky_post_id = $postID;
+	} else {
+		global $post;
+		$blocky_post_id = $post->ID;
+	}
+	
+	$blocky_additional_content = get_post_meta( $blocky_post_id, 'blocky_extra_content' );
+	if( isset( $blocky_additional_content ) && !empty( $blocky_additional_content ) ) {
+		foreach( $blocky_additional_content[0] as $blocky_section ){
+			$return[] = array( 'class' => $blocky_section['class'], 'content' => $blocky_section['content'] );
+		}
+	}
+	return $return;
+}
 
 function blocky_content_filter( $content ) {
 	

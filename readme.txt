@@ -1,10 +1,10 @@
 === Blocky! - Additional Content Sections ===
 Contributors: cameronjonesweb
-Tags: admin
+Tags: admin, builder, cms, css, class, page, post, page builder, content, post meta, ajax, posts, pages, wordpress
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=WLV5HPHSPM2BG&lc=AU&item_name=Cameron%20Jones%20Web%20Development¤cy_code=AUD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 4.2
 Tested up to: 4.3
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -21,8 +21,8 @@ If you like the plugin, please take the time to leave a review.
 
 = From your WordPress dashboard =
 
-1. Click `Add New` from the plugins page in your wordpress site
-2. Search for `Facebook Page Plugin`
+1. Click `Add New` from the plugins page in your WordPress site
+2. Search for `Blocky! - Additional Content Sections`
 3. Click on install
 
 = Alternatively from wordpress.org =
@@ -43,12 +43,18 @@ I have found that users find it easier if all the content for a page or post is 
 = Why aren't my Blocky! content sections saved in the revisions? =
 Blocky! content sections are saved as post meta, which is different to post content. Only the title and content are saved in revisions. This is something I will look to explore in future versions.
 
+= Can I get an unfiltered version of my post content? =
+Yes. Blocky! adds a filter to the `the_content()` function, but you can use `echo get_the_content();` in your template to return your post content unfiltered. Blocky! also includes a `get_additional_content()` function, which returns the additional content sections as an array, so you can use your additional content sections in more advanced uses such as in a sidebar, with nested tags, use the class input as a data-attribute or to add additional filters to your additional content.
+
 == Screenshots ==
 1. The admin interface
 2. Blocky! settings page
 3. Blocky! in action
 
 == Changelog ==
+= 1.1.0 =
+* Added `get_additional_content()` function to allow for more advanced uses of Blocky!
+* Small readme fixes
 = 1.0.2 =
 * Fixing bug that would return errors if there were no content sections and `WP_DEBUG` is turned on.
 = 1.0.1 =
@@ -57,5 +63,7 @@ Blocky! content sections are saved as post meta, which is different to post cont
 * Initial release
 
 == Upgrade Notice ==
+= 1.1.0 =
+Version 1.1.0 introduces the `get_additional_content()` function, allowing you to use Blocky! for more advanced uses.
 = 1.0.0 =
 Initial release
