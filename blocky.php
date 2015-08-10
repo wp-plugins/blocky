@@ -3,7 +3,7 @@
  * Plugin Name: Blocky! - Additional Content Blocks
  * Plugin URI: http://cameronjones.x10.mx/projects/blocky
  * Description: Add additional sections to your page content - no theme editing required!
- * Version: 1.1.2
+ * Version: 1.1.3
  * Author: Cameron Jones
  * Author URI: http://cameronjones.x10.mx
  * Text Domain: blocky
@@ -31,6 +31,7 @@ add_action( 'wp_ajax_ajax_wp_editor', 'blocky_ajax_wp_editor' );
 
 add_filter( 'the_content', 'blocky_content_filter' );
 add_filter( 'tiny_mce_before_init', 'blocky_get_TinyMCE_Settings' );
+add_filter( 'wpseo_pre_analysis_post_content', 'blocky_yoast_seo_content_filter' );
 
 global $TinyMCE_settings;
 
@@ -75,7 +76,7 @@ function blocky_content_filter( $content ) {
 	$blocky_new_content .= $blocky_closetag;
 	if( isset( $blocky_additional_content[0] ) && !empty( $blocky_additional_content[0] ) ) {
 		foreach( $blocky_additional_content[0] as $blocky_section ){
-			$blocky_new_content .= str_replace( '>', ' class="' . $blocky_section['class'] . '" data-blocky-version="1.1.2">', $blocky_opentag );
+			$blocky_new_content .= str_replace( '>', ' class="' . $blocky_section['class'] . '" data-blocky-version="1.1.3">', $blocky_opentag );
 			$blocky_new_content .= do_shortcode( $blocky_section['content'] );
 			$blocky_new_content .= $blocky_closetag;
 		}
@@ -312,3 +313,18 @@ function blocky_settings_page() {
 </form>
 </div>
 <?php }	
+
+function blocky_yoast_seo_content_filter( $post_content ) {
+	
+	global $post;
+	
+	$blocky_additional_content = get_additional_content( $post->ID );
+	
+	if( isset( $blocky_additional_content ) && !empty( $blocky_additional_content ) ) {
+		foreach( $blocky_additional_content as $content_block ){
+			$post_content .= ' ' . $content_block['content'];
+		}
+	}
+ 
+	return $post_content;
+}
